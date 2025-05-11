@@ -1,0 +1,83 @@
+CREATE TABLE Usuarios (
+    ID_Usuario NUMBER PRIMARY KEY,
+    Nombre VARCHAR2(50) NOT NULL,
+    Apellido VARCHAR2(50) NOT NULL,
+    Email VARCHAR2(100) UNIQUE NOT NULL,
+    Telefono VARCHAR2(20),
+    Direccion VARCHAR2(255),
+    ID_TipoUsuario NUMBER NOT NULL,
+    FOREIGN KEY (ID_TipoUsuario) REFERENCES Tipo_Usuario(ID_TipoUsuario)
+);
+
+CREATE TABLE Tipo_Usuario (
+    ID_TipoUsuario NUMBER PRIMARY KEY,
+    Nombre VARCHAR2(50) NOT NULL,
+    Descripcion VARCHAR2(255)
+);
+
+CREATE TABLE Roles (
+    ID_Rol NUMBER PRIMARY KEY,
+    Nombre_Rol VARCHAR2(50) NOT NULL,
+    Descripcion VARCHAR2(255)
+);
+
+CREATE TABLE Usuario_Rol (
+    ID_Usuario NUMBER NOT NULL,
+    ID_Rol NUMBER NOT NULL,
+    PRIMARY KEY (ID_Usuario, ID_Rol),
+    FOREIGN KEY (ID_Usuario) REFERENCES Usuarios(ID_Usuario),
+    FOREIGN KEY (ID_Rol) REFERENCES Roles(ID_Rol)
+);
+
+CREATE TABLE Membresias (
+    ID_Membresia NUMBER PRIMARY KEY,
+    Nombre VARCHAR2(50) NOT NULL,
+    Descripcion VARCHAR2(255),
+    Precio NUMBER(10,2) NOT NULL,
+    Duracion NUMBER NOT NULL
+);
+
+CREATE TABLE Horarios (
+    ID_Horario NUMBER PRIMARY KEY,
+    Dia_Semana VARCHAR2(15) NOT NULL,
+    Hora_Inicio TIMESTAMP NOT NULL,
+    Hora_Fin TIMESTAMP NOT NULL
+);
+
+CREATE TABLE Clases (
+    ID_Clase NUMBER PRIMARY KEY,
+    Nombre VARCHAR2(50) NOT NULL,
+    Descripcion VARCHAR2(255),
+    Cupo_Maximo NUMBER NOT NULL,
+    ID_Entrenador NUMBER NOT NULL,
+    ID_Horario NUMBER NOT NULL,
+    FOREIGN KEY (ID_Entrenador) REFERENCES Usuarios(ID_Usuario),
+    FOREIGN KEY (ID_Horario) REFERENCES Horarios(ID_Horario)
+);
+
+CREATE TABLE Reservas (
+    ID_Reserva NUMBER PRIMARY KEY,
+    ID_Usuario NUMBER NOT NULL,
+    ID_Clase NUMBER NOT NULL,
+    Fecha_Reserva TIMESTAMP NOT NULL,
+    Estado VARCHAR2(20) CHECK (Estado IN ('Confirmada', 'Cancelada', 'Pendiente')),
+    FOREIGN KEY (ID_Usuario) REFERENCES Usuarios(ID_Usuario),
+    FOREIGN KEY (ID_Clase) REFERENCES Clases(ID_Clase)
+);
+
+CREATE TABLE Pagos (
+    ID_Pago NUMBER PRIMARY KEY,
+    ID_Usuario NUMBER NOT NULL,
+    Monto NUMBER(10,2) NOT NULL,
+    Fecha_Pago TIMESTAMP NOT NULL,
+    Metodo VARCHAR2(20) CHECK (Metodo IN ('Tarjeta', 'Transferencia', 'Efectivo')),
+    FOREIGN KEY (ID_Usuario) REFERENCES Usuarios(ID_Usuario)
+);
+
+CREATE TABLE Servicios (
+    ID_Servicio NUMBER PRIMARY KEY,
+    Nombre VARCHAR2(50) NOT NULL,
+    Descripcion VARCHAR2(255),
+    Precio NUMBER(10,2) NOT NULL
+);
+
