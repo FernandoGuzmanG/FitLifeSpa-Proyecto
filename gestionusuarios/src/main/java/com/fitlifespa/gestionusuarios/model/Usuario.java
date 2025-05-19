@@ -34,10 +34,10 @@ public class Usuario {
     private String snombre;
 
     @Column(length = 50, nullable = false)
-    private String apellidop;
+    private String appaterno;
 
     @Column(length = 50, nullable = false)
-    private String apellidom;
+    private String apmaterno;
 
     @Column(length = 30, nullable = false, unique = true)
     private String correo;
@@ -52,4 +52,9 @@ public class Usuario {
     @JoinColumn(name = "id_rol")
     @JsonIgnoreProperties("usuario")
     private Rol rol;
+
+    @ManyToOne
+    @JoinColumn(name = "id_estado")
+    @JsonIgnoreProperties("usuario")
+    private Estado estado;
 }

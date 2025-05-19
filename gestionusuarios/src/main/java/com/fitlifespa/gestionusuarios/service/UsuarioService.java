@@ -16,28 +16,32 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public List<Usuario> findAllUsuario(){
+    public List<Usuario> findAll(){
         return usuarioRepository.findAll();
     }
 
-    public Usuario findByIdUsuario(Long id){
+    public Usuario findById(Long id){
         return usuarioRepository.findById(id).orElseThrow(()-> new RuntimeException("Usuario no encontrado con ID: "+ id));
     }
 
-    public Usuario saveUsuario(Usuario usuario) {
+    public Usuario save(Usuario usuario) {
         return usuarioRepository.save(usuario);
     }
 
-    public void deleteByIdUsuario(Long id) {
+    public void deleteById(Long id) {
         usuarioRepository.deleteById(id);
     }
 
-    public Usuario findByCorreoUsuario(String correo){
+    public Usuario findByCorreo(String correo){
         return usuarioRepository.findByCorreo(correo);
     }
 
-    public Usuario findByRutUsuario(String rut){
+    public Usuario findByRut(String rut){
         return usuarioRepository.findByRut(rut);
+    }
+
+    public Usuario findByUsername(String nomUsuario){
+        return usuarioRepository.findByUsername(nomUsuario);
     }
     
 }

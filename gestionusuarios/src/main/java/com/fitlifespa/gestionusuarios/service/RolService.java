@@ -16,12 +16,15 @@ public class RolService {
     @Autowired
     private RolRepository rolRepository;
 
-    public List<Rol> findAllRol(){
+    public List<Rol> findAll(){
         return rolRepository.findAll();
     }
 
-    public Rol findByIdRol(Long id){
+    public Rol findById(Long id){
         return rolRepository.findById(id).orElseThrow(()-> new RuntimeException("Rol no encontrado con ID: "+ id));
     }
 
+    public Rol findByNombre(String nombreRol){
+        return rolRepository.findByNombre(nombreRol);
+    }
 }

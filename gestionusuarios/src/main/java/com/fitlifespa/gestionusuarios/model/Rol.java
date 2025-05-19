@@ -2,7 +2,7 @@ package com.fitlifespa.gestionusuarios.model;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fitlifespa.gestionusuarios.model.Enum.EnumRol;
+import com.fitlifespa.gestionusuarios.model.Enum.NombreRol;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -30,12 +30,10 @@ public class Rol {
 
     @Column(unique = true, nullable = false)
     @Enumerated(EnumType.STRING)
-    private EnumRol nombreRol;
-
-    @Column()
-    private String descripcion;
+    private NombreRol nombreRol;
 
     @OneToMany(mappedBy = "rol", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Usuario> usuarios;
+    
 }
