@@ -1,5 +1,6 @@
 package com.fitlife.servicios.Model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,8 +21,10 @@ import lombok.NoArgsConstructor;
 public class Resenia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable=false, unique=true, length=30)
     private Long idResenia;
     private String fechaResenia;
+    @Column(length=50)
     private String comentario;
 
     @ManyToOne

@@ -1,5 +1,6 @@
 package com.fitlife.servicios.Model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,6 +20,7 @@ import lombok.NoArgsConstructor;
 public class Membresia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable= false, unique=true, length=30)
     private Long idMembresia;
     private String fInicio;
     private String fFin;

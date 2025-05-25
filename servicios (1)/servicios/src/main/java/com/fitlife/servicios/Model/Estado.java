@@ -22,9 +22,10 @@ import lombok.NoArgsConstructor;
 public class Estado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, length = 30, unique = true)
     private Long idEstado;
 
-    @Column(nullable = false, length = 30, unique = true)
+    @Column(length = 10, nullable = false)
     private String nombreEstado;
 
     @OneToMany(mappedBy = "estado", cascade = CascadeType.ALL)
