@@ -1,11 +1,11 @@
-package com.fitlifespa.microservice_membresias.service;
+package com.fitlifespa.microservice_reservas.service;
 
-import com.fitlifespa.microservice_membresias.model.EstadoReserva;
-import com.fitlifespa.microservice_membresias.model.EstadoReservaHistorial;
-import com.fitlifespa.microservice_membresias.model.Reserva;
-import com.fitlifespa.microservice_membresias.repository.EstadoReservaHistorialRepository;
-import com.fitlifespa.microservice_membresias.repository.EstadoReservaRepository;
-import com.fitlifespa.microservice_membresias.repository.ReservaRepository;
+import com.fitlifespa.microservice_reservas.model.EstadoReserva;
+import com.fitlifespa.microservice_reservas.model.EstadoReservaHistorial;
+import com.fitlifespa.microservice_reservas.model.Reserva;
+import com.fitlifespa.microservice_reservas.repository.EstadoReservaHistorialRepository;
+import com.fitlifespa.microservice_reservas.repository.EstadoReservaRepository;
+import com.fitlifespa.microservice_reservas.repository.ReservaRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

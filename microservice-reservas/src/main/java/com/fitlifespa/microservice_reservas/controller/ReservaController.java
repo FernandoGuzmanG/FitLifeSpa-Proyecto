@@ -1,9 +1,9 @@
-package com.fitlifespa.microservice_membresias.controller;
+package com.fitlifespa.microservice_reservas.controller;
 
-import com.fitlifespa.microservice_membresias.model.EstadoReservaHistorial;
-import com.fitlifespa.microservice_membresias.model.Reserva;
-import com.fitlifespa.microservice_membresias.security.RoleValidator;
-import com.fitlifespa.microservice_membresias.service.ReservaService;
+import com.fitlifespa.microservice_reservas.model.EstadoReservaHistorial;
+import com.fitlifespa.microservice_reservas.model.Reserva;
+import com.fitlifespa.microservice_reservas.security.RoleValidator;
+import com.fitlifespa.microservice_reservas.service.ReservaService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;

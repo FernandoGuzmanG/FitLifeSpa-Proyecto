@@ -1,4 +1,4 @@
-package com.fitlifespa.microservice_membresias.model;
+package com.fitlifespa.microservice_reservas.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

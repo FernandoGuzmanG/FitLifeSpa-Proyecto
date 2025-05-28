@@ -1,6 +1,6 @@
-package com.fitlifespa.microservice_membresias.repository;
+package com.fitlifespa.microservice_reservas.repository;
 
-import com.fitlifespa.microservice_membresias.model.EstadoReserva;
+import com.fitlifespa.microservice_reservas.model.EstadoReserva;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

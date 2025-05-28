@@ -33,7 +33,7 @@ public class HistorialController {
 
     @GetMapping("/{idTicket}")
     public ResponseEntity<List<Historial>> historial(@PathVariable Long idTicket, HttpServletRequest request) {
-        roleValidator.requireRole(request, "ADMINISTRADOR");
+        roleValidator.requireRole(request, "CLIENTE", "SOPORTE");
         List<Historial> historial = historialService.listarPorTicket(idTicket);
         if (historial.isEmpty()){
             return ResponseEntity.noContent().build();

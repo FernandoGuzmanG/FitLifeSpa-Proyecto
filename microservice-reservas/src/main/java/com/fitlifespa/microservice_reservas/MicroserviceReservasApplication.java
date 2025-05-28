@@ -1,13 +1,11 @@
-package com.fitlifespa.microservice_tickets;
+package com.fitlifespa.microservice_reservas;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MicroserviceMembresiasApplication {
-
+public class MicroserviceReservasApplication {
 	public static void main(String[] args) {
-		SpringApplication.run(MicroserviceMembresiasApplication.class, args);
+		SpringApplication.run(MicroserviceReservasApplication.class, args);
 	}
-
 }

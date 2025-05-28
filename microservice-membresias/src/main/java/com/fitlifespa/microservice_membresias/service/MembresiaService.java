@@ -2,7 +2,6 @@ package com.fitlifespa.microservice_membresias.service;
 
 import com.fitlifespa.microservice_membresias.model.Membresia;
 import com.fitlifespa.microservice_membresias.repository.MembresiaRepository;
-import com.fitlifespa.microservice_membresias.repository.PlanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,8 +10,6 @@ import java.util.Optional;
 
 @Service
 public class MembresiaService {
-    @Autowired
-    private PlanRepository planRepository;
     @Autowired
     private MembresiaRepository membresiaRepository;
 

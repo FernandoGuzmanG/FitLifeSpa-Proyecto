@@ -2,7 +2,6 @@ package com.fitlifespa.microservice_gestionperfil.service;
 
 import com.fitlifespa.microservice_gestionperfil.dto.UsuarioPerfil;
 import lombok.RequiredArgsConstructor;
-import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 

@@ -52,7 +52,7 @@ public class TicketService {
     public Ticket asignarSoporte(Long idTicket, Long idSoporte) {
         Ticket ticket = ticketRepo.findById(idTicket)
                 .orElseThrow(() -> new RuntimeException("Ticket no encontrado"));
-        ticket.setIdUsuarioRol(idSoporte);
+        ticket.setIdSoporte(idSoporte);
         return ticketRepo.save(ticket);
     }
 

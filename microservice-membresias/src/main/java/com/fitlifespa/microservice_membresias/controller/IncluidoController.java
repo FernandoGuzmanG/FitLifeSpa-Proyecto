@@ -35,7 +35,7 @@ public class IncluidoController {
         try{
             incluido.setIdIncluido(null);
             Incluido nuevoIncluido = incluidoService.save(incluido);
-            return ResponseEntity.status(HttpStatus.CREATED).body(incluido);
+            return ResponseEntity.status(HttpStatus.CREATED).body(nuevoIncluido);
         }catch (Exception e){
             return ResponseEntity.notFound().build();
         }

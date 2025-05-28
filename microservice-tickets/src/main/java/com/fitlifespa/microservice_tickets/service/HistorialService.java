@@ -33,6 +33,6 @@ public class HistorialService {
     }
 
     public List<Historial> listarPorTicket(Long idTicket) {
-        return historialRepo.findByTicketIdOrderByFechaAsc(idTicket);
+        return historialRepo.findByTicketIdOrderByFechaMensajeAsc(idTicket);
     }
 }

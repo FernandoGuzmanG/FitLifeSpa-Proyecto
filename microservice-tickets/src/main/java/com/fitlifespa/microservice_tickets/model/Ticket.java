@@ -23,7 +23,8 @@ public class Ticket {
     private String descripcion;
 
     private Long idUsuario;
-    private Long idUsuarioRol;
+
+    private Long idSoporte;
 
     @ManyToOne
     @JoinColumn(name = "id_motivo")

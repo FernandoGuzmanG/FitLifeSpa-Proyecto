@@ -1,4 +1,4 @@
-package com.fitlifespa.microservice_membresias.security;
+package com.fitlifespa.microservice_reservas.security;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;

@@ -20,12 +20,12 @@ public class TicketController {
     private RoleValidator roleValidator;
 
     @PostMapping("/crear")
-    public ResponseEntity<Ticket> crearTicket(@RequestParam String descripcion, @RequestParam Long idMotivo, HttpServletRequest request) {
+    public ResponseEntity<Ticket> crearTicket(@RequestBody Ticket ticket, HttpServletRequest request) {
         roleValidator.requireRole(request, "CLIENTE");
         Long idUsuario = roleValidator.getUserId(request);
         try{
-            Ticket ticket = ticketService.crearTicket(descripcion, idUsuario, idMotivo);
-            return ResponseEntity.status(HttpStatus.CREATED).body(ticket);
+            Ticket nuevoTicket = ticketService.crearTicket(ticket.getDescripcion(), idUsuario, ticket.getMotivo().getId());
+            return ResponseEntity.status(HttpStatus.CREATED).body(nuevoTicket);
         }catch (Exception e){
             return ResponseEntity.notFound().build();
         }
@@ -52,12 +52,12 @@ public class TicketController {
         return ResponseEntity.ok(tickets);
     }
 
-    @PutMapping("/{id}/estado")
-    public ResponseEntity<Ticket> cambiarEstado(@PathVariable Long id, @RequestParam String estado, HttpServletRequest request) {
+    @PutMapping("/{id}/estado/{estado}")
+    public ResponseEntity<Ticket> cambiarEstado(@PathVariable Long id, @PathVariable String estado, HttpServletRequest request) {
         roleValidator.requireRole(request, "SOPORTE");
         try{
-            Ticket ticket = ticketService.findById(id);
-            return ResponseEntity.ok(ticketService.cambiarEstado(id, estado));
+            String estado1 = estado.toUpperCase();
+            return ResponseEntity.ok(ticketService.cambiarEstado(id, estado1));
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }
@@ -68,11 +68,9 @@ public class TicketController {
         roleValidator.requireRole(request, "SOPORTE");
         Long idSoporte = roleValidator.getUserId(request);
         try{
-            Ticket ticket = ticketService.findById(id);
             return ResponseEntity.ok(ticketService.asignarSoporte(id, idSoporte));
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }
     }
 }
-

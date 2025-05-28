@@ -15,6 +15,6 @@ public class EstadoTicket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nombre; // PENDIENTE, EN PROGRESO, CERRADO
+    private String nombre;
 }
 
