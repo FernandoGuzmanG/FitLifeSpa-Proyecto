@@ -23,6 +23,11 @@
     <module>microservice-usuarios</module>
     <module>microservice-membresias</module>
     <module>microservice-tickets</module>
+    <module>microservice-servicios</module>
+    <module>microservice-reservas</module>
+    <module>microservice-clases</module>
+    <module>microservice-resenas</module>
+    <module>microservice-gestionperfil</module>
   </modules>
 
   <properties>

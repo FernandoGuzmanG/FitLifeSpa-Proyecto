@@ -7,11 +7,13 @@ import org.springframework.stereotype.Repository;
 
 import com.fitlifespa.microservice_usuarios.model.Usuario;
 
+import java.util.Optional;
+
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     @Query(value = "SELECT * FROM usuario WHERE correo = :correo", nativeQuery = true)
-    Usuario findByCorreo(@Param("correo") String correo);
+    Optional<Usuario> findByCorreo(@Param("correo") String correo);
 
     @Query(value = "SELECT * FROM usuario WHERE rut = :rut", nativeQuery = true)
-    Usuario findByRut(@Param("rut") String rut);
+    Optional<Usuario> findByRut(@Param("rut") String rut);
 }

@@ -2,6 +2,7 @@ package com.fitlifespa.microservice_usuarios.service;
 
 import java.util.List;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -40,12 +41,26 @@ public class UsuarioService {
     }
 
     public Usuario findByCorreo(String correo){
-        return usuarioRepository.findByCorreo(correo);
+        return usuarioRepository.findByCorreo(correo).orElseThrow(()-> new RuntimeException("Usuario no encontrado con Correo: "+ correo));
     }
 
     public Usuario findByRut(String rut){
-        return usuarioRepository.findByRut(rut);
+        return usuarioRepository.findByRut(rut).orElseThrow(()-> new RuntimeException("Usuario no encontrado con Rut: "+ rut));
     }
+
+    public void cambiarClave(Long id, String nueva, String confirmar) {
+        Usuario usuario = usuarioRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Usuario no encontrado"));
+
+        if (!nueva.equals(confirmar)) {
+            throw new IllegalArgumentException("Las contraseñas no coinciden");
+        }
+
+        usuario.setClave(passwordEncoder.encode(nueva));
+        usuarioRepository.save(usuario);
+    }
+
+
 
 
 }

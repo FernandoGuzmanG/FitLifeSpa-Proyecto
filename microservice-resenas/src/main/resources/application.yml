@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: msvc-resenas
+  config:
+    import: optional:configserver:http://localhost:8888
+logging:
+  level:
+    com.netflix.discovery: error

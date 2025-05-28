@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/microservice-asignaciones/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/microservice-auth/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservice-clases/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/microservice-config/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/microservice-eureka/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/microservice-gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservice-gestionperfil/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/microservice-membresias/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservice-resenas/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/microservice-reservas/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/microservice-servicios/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/microservice-tickets/src/main/java" charset="UTF-8" />

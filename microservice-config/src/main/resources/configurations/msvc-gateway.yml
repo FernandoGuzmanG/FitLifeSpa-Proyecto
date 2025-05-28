@@ -15,16 +15,46 @@ spring:
           uri: 'http://localhost:8081'
           predicates:
             - Path=/api/auth/**
+
         - id: msvc-usuarios
           uri: 'http://localhost:8082'
           predicates:
-            - Path=/api/usuarios/**
+            - Path=/api/usuarios/**,/api/roles/**
+
         - id: msvc-membresias
           uri: 'http://localhost:8083'
           predicates:
-            - Path=/api/membresias/**
-            - Path=/api/incluidos/**
-            - Path=/api/planes/**
+            - Path=/api/membresias/**,/api/incluidos/**,/api/planes/**
+
+        - id: msvc-servicios
+          uri: 'http://localhost:8084'
+          predicates:
+            - Path=/api/servicios/**
+
+        - id: msvc-gestionperfil
+          uri: 'http://localhost:8085'
+          predicates:
+            - Path=/api/perfil/**
+
+        - id: msvc-clases
+          uri: 'http://localhost:8086'
+          predicates:
+            - Path=/api/clases/**,/api/inscripciones/**
+
+        - id: msvc-tickets
+          uri: 'http://localhost:8087'
+          predicates:
+            - Path=/api/historial/**,/api/tickets/**
+
+        - id: msvc-resenas
+          uri: 'http://localhost:8088'
+          predicates:
+            - Path=/api/resenas/**
+
+        - id: msvc-reservas
+          uri: 'http://localhost:8089'
+          predicates:
+            - Path=/api/reservas/**
 
 eureka:
   client:

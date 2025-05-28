@@ -8,27 +8,35 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="microservice-gateway" />
-        <module name="microservice-membresias" />
-        <module name="microservice-config" />
         <module name="microservice-auth" />
+        <module name="microservice-reservas" />
+        <module name="microservice-resenas" />
+        <module name="microservice-servicios" />
+        <module name="microservice-membresias" />
+        <module name="microservice-gestionperfil" />
+        <module name="microservice-config" />
         <module name="microservice-tickets" />
         <module name="microservice-eureka" />
         <module name="microservice-usuarios" />
+        <module name="microservice-clases" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="microservice-reservas" target="21" />
-      <module name="microservice-servicios" target="21" />
+      <module name="microservice-asignaciones" target="21" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="fitlifespa-msvc" options="" />
+      <module name="microservice-asignaciones" options="-parameters" />
       <module name="microservice-auth" options="-parameters" />
+      <module name="microservice-clases" options="-parameters" />
       <module name="microservice-config" options="-parameters" />
       <module name="microservice-eureka" options="-parameters" />
       <module name="microservice-gateway" options="-parameters" />
+      <module name="microservice-gestionperfil" options="-parameters" />
       <module name="microservice-membresias" options="-parameters" />
+      <module name="microservice-resenas" options="-parameters" />
       <module name="microservice-reservas" options="-parameters" />
       <module name="microservice-servicios" options="-parameters" />
       <module name="microservice-tickets" options="-parameters" />

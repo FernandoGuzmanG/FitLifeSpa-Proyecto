@@ -1,9 +1,11 @@
 package com.fitlifespa.microservice_usuarios.controller;
 
 import java.util.List;
+import java.util.Map;
 
-import com.fitlifespa.microservice_usuarios.dto.PerfilCliente;
+import com.fitlifespa.microservice_usuarios.dto.UsuarioPerfil;
 import com.fitlifespa.microservice_usuarios.security.RoleValidator;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -163,61 +165,65 @@ public class UsuariosController {
 
     }
 
-    @GetMapping("/roles/nombre/{nombreRol}")
-    public ResponseEntity<?> buscarRolNombre(@PathVariable String nombreRol, HttpServletRequest request){
-        roleValidator.requireRole(request, "ADMINISTRADOR");
-        try{
-            String nomRol = nombreRol.toUpperCase();
-            Rol rol = rolService.findByNombre(nomRol);
-            return ResponseEntity.ok(rol);
-        }catch(RuntimeException e){
-            return ResponseEntity.notFound().build();
+
+    @PutMapping("/{id}/cambiar-password")
+    public ResponseEntity<String> cambiarPassword(@PathVariable Long id,
+                                                  @RequestBody Map<String, String> datos) {
+        String nueva = datos.get("nuevaContrasena");
+        String confirmar = datos.get("confirmarContrasena");
+
+        try {
+            usuarioService.cambiarClave(id, nueva, confirmar);
+            return ResponseEntity.ok("Contraseña actualizada exitosamente.");
+        } catch (EntityNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario no encontrado.");
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 
-    @GetMapping("/mi-perfil")
-    public ResponseEntity<?> verPerfilCliente(HttpServletRequest request) {
-        roleValidator.requireRole(request, "CLIENTE");
-        String rol = request.getHeader("X-User-Roles");
-        String correo = request.getHeader("X-User-Correo");
-        Usuario usuario = usuarioService.findByCorreo(correo);
-        PerfilCliente perfilCliente = new PerfilCliente();
-        perfilCliente.setRut(usuario.getRut());
-        perfilCliente.setPnombre(usuario.getPnombre());
-        perfilCliente.setSnombre(usuario.getSnombre());
-        perfilCliente.setAppaterno(usuario.getAppaterno());
-        perfilCliente.setApmaterno(usuario.getApmaterno());
-        perfilCliente.setCorreo(usuario.getCorreo());
-        return ResponseEntity.ok(perfilCliente);
+    @GetMapping("/perfil")
+    public ResponseEntity<UsuarioPerfil> verPerfil(HttpServletRequest request) {
+        Long idUsuario = roleValidator.getUserId(request);
+        Usuario usuario = usuarioService.findById(idUsuario);
+
+        UsuarioPerfil dto = new UsuarioPerfil(
+                usuario.getRut(),
+                usuario.getPnombre(),
+                usuario.getSnombre(),
+                usuario.getAppaterno(),
+                usuario.getApmaterno(),
+                usuario.getCorreo()
+        );
+
+        return ResponseEntity.ok(dto);
     }
-        /*
-        if (rol.equals("ENTRENADOR")) {
-            PerfilEntrenador perfilEntrenador = new PerfilEntrenador();
-            perfilEntrenador.setRut(usuario.getRut());
-            perfilEntrenador.setPnombre(usuario.getPnombre());
-            perfilEntrenador.setSnombre(usuario.getSnombre());
-            perfilEntrenador.setAppaterno(usuario.getAppaterno());
-            perfilEntrenador.setApmaterno(usuario.getApmaterno());
-            perfilEntrenador.setCorreo(usuario.getCorreo());
-            return ResponseEntity.ok(perfilEntrenador);
-        }
-        return ResponseEntity.notFound().build();
-    }
-    /*
+
+
     @PutMapping("/perfil")
-    public ResponseEntity<Usuario> actualizarPerfil(@RequestBody Usuario datosActualizados, HttpServletRequest request) {
-        roleValidator.requireRole(request, "CLIENTE", "ENTRENADOR");
+    public ResponseEntity<UsuarioPerfil> actualizarPerfil(@RequestBody UsuarioPerfil nuevosDatos,
+                                                             HttpServletRequest request) {
+        Long idUsuario = roleValidator.getUserId(request);
+        Usuario usuario = usuarioService.findById(idUsuario);
 
-        String idUsuarioHeader = request.getHeader("X-User-Id");
-        if (idUsuarioHeader == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No se recibió ID del usuario");
-        }
+        usuario.setRut(nuevosDatos.getRut());
+        usuario.setPnombre(nuevosDatos.getPnombre());
+        usuario.setSnombre(nuevosDatos.getSnombre());
+        usuario.setAppaterno(nuevosDatos.getAppaterno());
+        usuario.setApmaterno(nuevosDatos.getApmaterno());
+        usuario.setCorreo(nuevosDatos.getCorreo());
 
-        Long idUsuario = Long.parseLong(idUsuarioHeader);
+        usuarioService.save(usuario);
 
-        return userService.actualizarPerfil(idUsuario, datosActualizados)
-                .map(ResponseEntity::ok)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario no encontrado"));
+        UsuarioPerfil dto = new UsuarioPerfil(
+                usuario.getRut(),
+                usuario.getPnombre(),
+                usuario.getSnombre(),
+                usuario.getAppaterno(),
+                usuario.getApmaterno(),
+                usuario.getCorreo()
+        );
+
+        return ResponseEntity.ok(dto);
     }
-    */
 }

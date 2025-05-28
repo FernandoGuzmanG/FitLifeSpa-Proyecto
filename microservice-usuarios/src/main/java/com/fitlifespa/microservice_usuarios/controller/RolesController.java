@@ -19,6 +19,7 @@ public class RolesController {
     private RoleValidator roleValidator;
     @Autowired
     private RolService rolService;
+
     @GetMapping
     public ResponseEntity<List<Rol>> mostrarRoles(HttpServletRequest request){
         roleValidator.requireRole(request, "ADMINISTRADOR");
