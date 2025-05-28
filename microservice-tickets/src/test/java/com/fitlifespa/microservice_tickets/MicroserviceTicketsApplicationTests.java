@@ -1,10 +1,10 @@
-package com.fitlifespa.microservice_clases;
+package com.fitlifespa.microservice_tickets;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MicroserviceClasesApplicationTests {
+class MicroserviceTicketsApplicationTests {
 
 	@Test
 	void contextLoads() {
