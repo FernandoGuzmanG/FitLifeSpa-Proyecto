@@ -27,7 +27,6 @@
     <module>microservice-reservas</module>
     <module>microservice-clases</module>
     <module>microservice-resenas</module>
-    <module>microservice-gestionperfil</module>
   </modules>
 
   <properties>

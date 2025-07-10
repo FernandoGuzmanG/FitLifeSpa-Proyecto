@@ -2,8 +2,6 @@ server:
   port: 8088
 
 spring:
-  application:
-    name: msvc-resenas
   datasource:
     url: jdbc:mysql://localhost:3306/db_fitlifespa
     username: root

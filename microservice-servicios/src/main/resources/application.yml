@@ -3,6 +3,8 @@ spring:
     name: msvc-servicios
   config:
     import: optional:configserver:http://localhost:8888
+  profiles:
+    active: dev
 logging:
   level:
     com.netflix.discovery: error

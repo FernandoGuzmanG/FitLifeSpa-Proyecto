@@ -8,14 +8,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="microservice-gateway" />
-        <module name="microservice-auth" />
-        <module name="microservice-reservas" />
-        <module name="microservice-resenas" />
         <module name="microservice-servicios" />
         <module name="microservice-membresias" />
-        <module name="microservice-gestionperfil" />
+        <module name="microservice-auth" />
         <module name="microservice-config" />
+        <module name="microservice-reservas" />
         <module name="microservice-tickets" />
+        <module name="microservice-resenas" />
         <module name="microservice-eureka" />
         <module name="microservice-usuarios" />
         <module name="microservice-clases" />
@@ -23,6 +22,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="microservice-asignaciones" target="21" />
+      <module name="microservice-gestionperfil" target="21" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

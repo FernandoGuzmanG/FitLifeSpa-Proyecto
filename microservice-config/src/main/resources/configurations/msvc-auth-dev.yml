@@ -2,8 +2,6 @@ server:
   port: 8081
 
 spring:
-  application:
-    name: msvc-auth
   datasource:
     url: jdbc:mysql://localhost:3306/db_fitlifespa
     username: root

@@ -29,13 +29,15 @@ public class ClaseService {
         return claseRepository.save(clase);
     }
 
-    public Clase actualizar(Clase clase) {
-        return claseRepository.save(clase);
+    public Clase actualizarEntrenador(Long idClase, Long idUsuario) {
+        Clase claseActualizada = claseRepository.findById(idClase).orElseThrow(() -> new RuntimeException("Clase no encontrada con ID: " + idClase));
+        claseActualizada.setIdUsuario(idUsuario);
+        return claseActualizada;
     }
 
     public Clase cambiarEstado(Long id, String nuevoEstado) {
         Clase clase = claseRepository.findById(id).orElseThrow();
-        EstadoClase estado = estadoClaseRepository.findByNombre(nuevoEstado).orElseThrow();
+        EstadoClase estado = estadoClaseRepository.findByNombre(nuevoEstado).orElseThrow(() -> new RuntimeException("Estado '" + nuevoEstado + "' no encontrado"));
         clase.setEstado(estado);
         return claseRepository.save(clase);
     }

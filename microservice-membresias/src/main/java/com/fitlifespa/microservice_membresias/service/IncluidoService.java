@@ -18,6 +18,7 @@ public class IncluidoService {
     }
 
     public Incluido save(Incluido incluido) {
+        incluido.setIdIncluido(null);
         return incluidoRepository.save(incluido);
     }
 

@@ -31,11 +31,6 @@ spring:
           predicates:
             - Path=/api/servicios/**
 
-        - id: msvc-gestionperfil
-          uri: 'http://localhost:8085'
-          predicates:
-            - Path=/api/perfil/**
-
         - id: msvc-clases
           uri: 'http://localhost:8086'
           predicates:

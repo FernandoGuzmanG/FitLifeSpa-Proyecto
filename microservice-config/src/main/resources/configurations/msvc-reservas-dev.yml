@@ -2,8 +2,6 @@ server:
   port: 8089
 
 spring:
-  application:
-    name: msvc-reservas
   datasource:
     url: jdbc:mysql://localhost:3306/db_fitlifespa
     username: root

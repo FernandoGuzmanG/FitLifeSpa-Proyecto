@@ -26,8 +26,8 @@ public class CargarDatos {
     ) {
         return args -> {
             if (planRepo.count() == 0) {
-                Plan planBasico = new Plan(null, "Plan Básico", "Acceso general", 19900.0, 30, null);
-                Plan planPremium = new Plan(null, "Plan Premium", "Acceso total + clases", 29900.0, 30, null);
+                Plan planBasico = new Plan(null, "Plan Básico", "Acceso general", 19900.0, 1, null);
+                Plan planPremium = new Plan(null, "Plan Premium", "Acceso total + clases", 29900.0, 1, null);
                 planRepo.saveAll(List.of(planBasico, planPremium));
 
                 incluidoRepo.saveAll(List.of(

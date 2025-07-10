@@ -1,5 +1,6 @@
 package com.fitlifespa.microservice_resenas.config;
 
+import com.fitlifespa.microservice_resenas.model.Enum.EstadoResena;
 import com.fitlifespa.microservice_resenas.model.Resena;
 import com.fitlifespa.microservice_resenas.repository.ResenaRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,10 +20,10 @@ public class CargarDatos {
         return args -> {
             if (resenaRepo.count() == 0) {
                 List<Resena> resenas = List.of(
-                        new Resena(null, LocalDate.now().minusDays(10), "Muy buen servicio, el entrenador fue muy atento.", 2L, 1L, 9.0),
-                        new Resena(null, LocalDate.now().minusDays(7), "Instalaciones limpias y bien mantenidas.", 2L, 2L, 8.5),
-                        new Resena(null, LocalDate.now().minusDays(3), "Tuve problemas con la reserva, pero el personal me ayudó.", 2L, 1L, 7.0),
-                        new Resena(null, LocalDate.now().minusDays(1), "Excelente experiencia, definitivamente volveré.", 2L, 2L, 10.0)
+                        new Resena(null, LocalDate.now().minusDays(10), "Muy buen servicio, el entrenador fue muy atento.", 2L, 1L, EstadoResena.DESBANEADO, 9.0),
+                        new Resena(null, LocalDate.now().minusDays(7), "Instalaciones limpias y bien mantenidas.", 2L, 2L, EstadoResena.DESBANEADO, 8.5),
+                        new Resena(null, LocalDate.now().minusDays(3), "Tuve problemas con la reserva, pero el personal me ayudó.", 2L, 1L, EstadoResena.DESBANEADO, 7.0),
+                        new Resena(null, LocalDate.now().minusDays(1), "Excelente experiencia, definitivamente volveré.", 2L, 2L, EstadoResena.DESBANEADO, 10.0)
                 );
 
                 resenaRepo.saveAll(resenas);

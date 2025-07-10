@@ -50,5 +50,6 @@ public class InscripcionService {
     public List<Inscripcion> historialFinalizadas(Long idUsuario) {
         return inscripcionRepository.findByIdUserAndEstado_Nombre(idUsuario, "FINALIZADO");
     }
+
 }
 

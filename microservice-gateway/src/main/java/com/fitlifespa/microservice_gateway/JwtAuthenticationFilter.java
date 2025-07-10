@@ -24,7 +24,6 @@ public class JwtAuthenticationFilter implements GlobalFilter, Ordered {
     @Value("${jwt.secret}")
     private String jwtSecret;
 
-    // Rutas públicas que no necesitan autenticación
     private static final List<String> publicPaths = List.of(
             "/api/auth/login",
             "/api/auth/register"
@@ -34,7 +33,6 @@ public class JwtAuthenticationFilter implements GlobalFilter, Ordered {
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         String path = exchange.getRequest().getPath().toString();
 
-        // Saltar validación para rutas públicas
         if (publicPaths.stream().anyMatch(path::startsWith)) {
             return chain.filter(exchange);
         }

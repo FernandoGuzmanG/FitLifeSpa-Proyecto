@@ -22,7 +22,22 @@ public class PlanService {
         return planRepository.findById(id);
     }
 
-    public Plan save(Plan plan) {
+    public Plan actualizarPlan(Long idPlan, Plan datosActualizados) {
+        Plan planExistente = planRepository.findById(idPlan)
+                .orElseThrow(() -> new RuntimeException("Plan no encontrado"));
+
+        // Actualizar campos permitidos
+        planExistente.setNombre(datosActualizados.getNombre());
+        planExistente.setDescripcion(datosActualizados.getDescripcion());
+        planExistente.setCosto(datosActualizados.getCosto());
+        planExistente.setDuracion(datosActualizados.getDuracion());
+
+        return planRepository.save(planExistente);
+    }
+
+
+    public Plan crearPlan(Plan plan) {
+        plan.setIdPlan(null);
         return planRepository.save(plan);
     }
 

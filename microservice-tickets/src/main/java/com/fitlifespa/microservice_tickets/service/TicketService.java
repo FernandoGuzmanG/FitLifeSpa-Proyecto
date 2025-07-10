@@ -6,6 +6,7 @@ import com.fitlifespa.microservice_tickets.model.Ticket;
 import com.fitlifespa.microservice_tickets.repository.EstadoTicketRepository;
 import com.fitlifespa.microservice_tickets.repository.MotivoRepository;
 import com.fitlifespa.microservice_tickets.repository.TicketRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class TicketService {
 
     private final TicketRepository ticketRepo;
@@ -37,16 +39,16 @@ public class TicketService {
         return ticketRepo.save(ticket);
     }
 
-    public List<Ticket> listarTicketsPorUsuario(Long idUsuario) {
+    public List<Ticket> listarTicketsPorCliente(Long idUsuario) {
         return ticketRepo.findByIdUsuarioOrderByFechaDesc(idUsuario);
+    }
+
+    public List<Ticket> listarTicketsPorSoporte(Long idUsuario) {
+        return ticketRepo.findByIdSoporteOrderByFechaDesc(idUsuario);
     }
 
     public List<Ticket> listarTodos() {
         return ticketRepo.findAll(Sort.by(Sort.Direction.DESC, "fecha"));
-    }
-
-    public Ticket findById(Long id) {
-        return ticketRepo.findById(id).orElseThrow(()-> new RuntimeException("Ticket no encontrado con ID: "+id));
     }
 
     public Ticket asignarSoporte(Long idTicket, Long idSoporte) {
