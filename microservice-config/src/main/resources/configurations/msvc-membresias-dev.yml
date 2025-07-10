@@ -1,12 +1,7 @@
 server:
-  port: 8085
+  port: 8083
 
 spring:
-  cloud:
-    discovery:
-      enabled: true
-  application:
-    name: msvc-gestionperfil
   datasource:
     url: jdbc:mysql://localhost:3306/db_fitlifespa
     username: root
